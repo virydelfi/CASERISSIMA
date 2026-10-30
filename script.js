@@ -46,7 +46,11 @@ if (inquiryForm) {
     const message = `${DEFAULT_MESSAGE}\n\n${details.join("\n")}`;
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+   js
+posthog.capture("whatsapp_form_submitted", {
+  event_type: formData.get("eventType"),
+}); 
+window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   });
 }
 
